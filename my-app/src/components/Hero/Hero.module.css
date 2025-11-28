@@ -1,14 +1,18 @@
 .hero {
-  height: 270px;
-  width: 100%;
   background-color: var(--color-black);
+  height: 300px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 100px;
+  justify-content: center;
+
+  gap: 100px;       /* Figma spacing */
+  padding-top: 20px;
 }
+
 .hero h1 {
   color: white;
   font-size: 32px;
   margin: 0;
+  font-weight: 600;
 }

@@ -5,25 +5,18 @@
 }
 
 .search {
-  width: 568px;
+  width: 520px;        /* EXACT Figma width */
   padding: 12px 16px;
-  border: 1px solid var(--color-black);
-  border-right: none;
   border-radius: 8px 0 0 8px;
+  border: 1px solid #000;
   outline: none;
-  font-size: 14px;
 }
 
 .searchButton {
-  height: 100%;
   padding: 12px 18px;
+  background: #fff;
+  border: 1px solid #000;
+  border-left: none;
   border-radius: 0 8px 8px 0;
-  border: 1px solid var(--color-black);
-  background: white;
   cursor: pointer;
-}
-
-.searchButton svg {
-  width: 18px;
-  height: 18px;
 }
