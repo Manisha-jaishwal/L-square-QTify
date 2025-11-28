@@ -1,38 +1,44 @@
-/* src/components/SongsSection/SongsSection.module.css */
-
 .wrapper {
-  margin-top: 32px;
-  padding: 0 32px;
+  margin-top: 40px;
 }
 
 .title {
-  color: white;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.loading {
-  color: white;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .tabs {
-  min-height: 32px;
-  margin-bottom: 16px;
+  color: #fff !important;
+  min-height: 40px;
 }
 
 .tab {
-  min-height: 32px !important;
+  color: #b3b3b3 !important;    /* Inactive tab = gray */
   text-transform: none !important;
-  color: white !important;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 20px;
+  padding: 0 !important;
+  min-height: 40px !important;
 }
 
 .tab.Mui-selected {
-  color: #34c94b !important;
-  font-weight: 600;
+  color: #fff !important;       /* Active tab = white */
+  font-weight: 600 !important;
+}
+
+/* Green underline */
+.MuiTabs-indicator {
+  background-color: #34c94b !important;
+}
+
+/* Fix tab text hover */
+.tab:hover {
+  color: #e5e5e5 !important;
 }
 
 .carouselWrapper {
-  margin-top: 8px;
+  margin-top: 20px;
 }

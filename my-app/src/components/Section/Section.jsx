@@ -20,15 +20,19 @@ function Section({
   useEffect(() => {
     async function loadData() {
       try {
-        if (dataOverride && Array.isArray(dataOverride)) {
+
+        // 🔥 If songs override exists → USE IT and DO NOT fetch albums
+        if (Array.isArray(dataOverride)) {
           setData(dataOverride);
           return;
         }
 
+        // 🔥 For Albums only → fetch using URL
         if (fetchUrl) {
-          const response = await axios.get(fetchUrl);
-          setData(response.data || []);
+          const res = await axios.get(fetchUrl);
+          setData(res.data || []);
         }
+
       } catch (err) {
         console.log("SECTION ERROR:", err);
       }
@@ -37,20 +41,21 @@ function Section({
     loadData();
   }, [fetchUrl, dataOverride]);
 
-  // Songs section → ALWAYS carousel, NEVER grid
+  // 🔥 Songs ALWAYS show carousel
   const showCarousel = showButton ? collapsed : true;
   const showGrid = showButton ? !collapsed : false;
 
   return (
     <div className={styles.section}>
-      {/* HEADER */}
+
+      {/* Header — hidden for Songs */}
       <div
         className={styles.header}
         style={{ display: hideHeader ? "none" : "flex" }}
       >
         <h3>{title}</h3>
 
-        {showButton && data.length > 0 && (
+        {showButton && (
           <button
             onClick={() => setCollapsed(!collapsed)}
             className={styles.toggle}
@@ -60,10 +65,10 @@ function Section({
         )}
       </div>
 
-      {/* CAROUSEL */}
+      {/* 🔥 Songs + Albums both go through this */}
       {showCarousel && <Carousel data={data} isSongs={isSongs} />}
 
-      {/* GRID VIEW (only for albums) */}
+      {/* 🔥 Only albums use grid - NOT songs */}
       {showGrid && (
         <div className={styles.grid}>
           {data.map((item) => (
