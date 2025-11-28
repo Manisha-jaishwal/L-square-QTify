@@ -1,0 +1,14 @@
+.hero {
+  height: 270px;
+  width: 100%;
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+}
+.hero h1 {
+  color: white;
+  font-size: 32px;
+  margin: 0;
+}

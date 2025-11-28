@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.search {
+  width: 568px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-black);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.searchButton {
+  height: 100%;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  border: 1px solid var(--color-black);
+  background: white;
+  cursor: pointer;
+}
+
+.searchButton svg {
+  width: 18px;
+  height: 18px;
+}
