@@ -1,13 +1,18 @@
-import "./App.css";
+import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import Section from "./components/Section/Section";
+import { fetchTopAlbums, fetchNewAlbums } from "./helpers/api";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar searchData={[]} />
+    <>
+      <Navbar />
       <Hero />
-    </div>
+
+      <Section title="Top Albums" fetchData={fetchTopAlbums} />
+      <Section title="New Albums" fetchData={fetchNewAlbums} />
+    </>
   );
 }
 

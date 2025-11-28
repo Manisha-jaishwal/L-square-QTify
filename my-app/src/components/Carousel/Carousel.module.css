@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.leftBtn,
+.rightBtn {
+  position: absolute;
+  top: 40%;
+  background: #1dd75f;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.leftBtn {
+  left: -10px;
+}
+.rightBtn {
+  right: -10px;
+}
