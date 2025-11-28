@@ -12,26 +12,28 @@ function SongsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchSongsAndGenres() {
+    async function loadSongsAndGenres() {
       try {
         const [genresRes, songsRes] = await Promise.all([
           axios.get("https://qtify-backend.labs.crio.do/genres"),
           axios.get("https://qtify-backend.labs.crio.do/songs"),
         ]);
 
-        const genresData = Array.isArray(genresRes.data) ? genresRes.data : [];
-        setGenres([{ key: "all", label: "All" }, ...genresData]);
+        // FIX HERE 🔥
+        const genresData = genresRes.data.data || [];
+        const songsData = songsRes.data.data || [];
 
-        const songsData = Array.isArray(songsRes.data) ? songsRes.data : [];
+        setGenres([{ key: "all", label: "All" }, ...genresData]);
         setSongs(songsData);
+
       } catch (err) {
-        console.error("Error fetching songs / genres", err);
+        console.error("Error loading songs/genres", err);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchSongsAndGenres();
+    loadSongsAndGenres();
   }, []);
 
   const filteredSongs =
@@ -54,11 +56,14 @@ function SongsSection() {
     <section className={styles.wrapper}>
       <h2 className={styles.title}>Songs</h2>
 
+      {/* GENRE TABS */}
       <Tabs
         value={selectedGenre}
         onChange={(e, newValue) => setSelectedGenre(newValue)}
         textColor="inherit"
-        TabIndicatorProps={{ style: { backgroundColor: "#34c94b" } }}
+        TabIndicatorProps={{
+          style: { backgroundColor: "#34c94b", height: 4 },
+        }}
         className={styles.tabs}
       >
         {genres.map((g) => (
@@ -76,7 +81,8 @@ function SongsSection() {
           title=""
           dataOverride={filteredSongs}
           isSongs={true}
-          showButton={false} // no Show all for songs
+          showButton={false}
+          hideHeader={true}
         />
       </div>
     </section>

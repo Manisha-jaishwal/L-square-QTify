@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://qtify-backend-labs.crio.do/api";
+const BASE_URL = "https://qtify-backend.labs.crio.do";
 
 export const getTopAlbums = () => axios.get(`${BASE_URL}/albums/top`);
 export const getNewAlbums = () => axios.get(`${BASE_URL}/albums/new`);

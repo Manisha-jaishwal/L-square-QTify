@@ -1,28 +1,36 @@
+/* src/components/SongsSection/SongsSection.module.css */
+
 .wrapper {
-  padding: 24px 32px 40px;
-  background-color: #121212;
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
+  margin-top: 32px;
+  padding: 0 32px;
 }
 
 .title {
+  color: white;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.tabs {
-  min-height: 40px;
-  margin-bottom: 12px;
-}
-
-.tab {
-  text-transform: none;
-  font-size: 14px;
+  margin-bottom: 16px;
 }
 
 .loading {
-  margin-top: 8px;
+  color: white;
+}
+
+.tabs {
+  min-height: 32px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  min-height: 32px !important;
+  text-transform: none !important;
+  color: white !important;
+  font-size: 14px;
+}
+
+.tab.Mui-selected {
+  color: #34c94b !important;
+  font-weight: 600;
 }
 
 .carouselWrapper {

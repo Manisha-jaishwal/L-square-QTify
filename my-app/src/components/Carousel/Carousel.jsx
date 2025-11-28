@@ -1,3 +1,5 @@
+// src/components/Carousel/Carousel.jsx
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -6,7 +8,7 @@ import "swiper/css/navigation";
 import Card from "../Card/Card";
 import styles from "./Carousel.module.css";
 
-function Carousel({ data }) {
+function Carousel({ data = [], isSongs = false }) {
   return (
     <div className={styles.carousel}>
       <Swiper
@@ -17,7 +19,7 @@ function Carousel({ data }) {
       >
         {data.map((item) => (
           <SwiperSlide key={item.id}>
-            <Card data={item} />
+            <Card data={item} isSongs={isSongs} />
           </SwiperSlide>
         ))}
       </Swiper>
