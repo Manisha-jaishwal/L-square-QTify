@@ -1,24 +1,28 @@
 .section {
-  margin-top: 40px;
+  margin: 20px 0;
   color: white;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
-.collapseBtn {
-  background: transparent;
-  color: #34c94b;
-  font-size: 16px;
+.title {
+  font-size: 22px;
+}
+
+.toggle {
+  background: none;
+  color: #1ed760;
   border: none;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }

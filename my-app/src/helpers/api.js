@@ -1,10 +1,8 @@
 import axios from "axios";
 
-export const fetchTopAlbums = () =>
-  axios.get("https://qtify-backend.labs.crio.do/albums/top");
+const BASE_URL = "https://qtify-backend-labs.crio.do/api";
 
-export const fetchNewAlbums = () =>
-  axios.get("https://qtify-backend.labs.crio.do/albums/new");
-
-export const fetchSongs = () =>
-  axios.get("https://qtify-backend.labs.crio.do/songs");
+export const getTopAlbums = () => axios.get(`${BASE_URL}/albums/top`);
+export const getNewAlbums = () => axios.get(`${BASE_URL}/albums/new`);
+export const getGenres = () => axios.get(`${BASE_URL}/genres`);
+export const getSongs = () => axios.get(`${BASE_URL}/songs`);

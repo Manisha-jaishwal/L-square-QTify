@@ -1,50 +1,47 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./Section.module.css";
 import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
 
-function Section({ title, fetchData }) {
+function Section({ title, fetchUrl, dataOverride, isSongs = false }) {
   const [data, setData] = useState([]);
-  const [showAll, setShowAll] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
-    fetchData().then((res) => setData(res.data));
-  }, []);
+    async function loadSection() {
+      try {
+        if (dataOverride) {
+          setData(dataOverride);
+          return;
+        }
+
+        const response = await axios.get(fetchUrl);
+        setData(response.data);
+      } catch (err) {
+        console.log("SECTION ERROR:", err);
+      }
+    }
+    loadSection();
+  }, [fetchUrl, dataOverride]);
 
   return (
     <div className={styles.section}>
       <div className={styles.header}>
         <h3>{title}</h3>
-        <button
-          className={styles.collapseBtn}
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Collapse" : "Show All"}
+        <button onClick={() => setCollapsed(!collapsed)} className={styles.toggle}>
+          {collapsed ? "Show all" : "Collapse"}
         </button>
       </div>
 
-      {showAll ? (
+      {collapsed ? (
+        <Carousel data={data} />
+      ) : (
         <div className={styles.grid}>
           {data.map((item) => (
-            <Card
-              key={item.id}
-              image={item.image}
-              title={item.title}
-              follows={item.follows}
-            />
+            <Card key={item.id} data={item} />
           ))}
         </div>
-      ) : (
-        <Carousel>
-          {data.map((item) => (
-            <Card
-              key={item.id}
-              image={item.image}
-              title={item.title}
-              follows={item.follows}
-            />
-          ))}
-        </Carousel>
       )}
     </div>
   );

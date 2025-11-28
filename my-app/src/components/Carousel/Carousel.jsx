@@ -1,32 +1,26 @@
-import React, { useRef } from "react";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import Card from "../Card/Card";
 import styles from "./Carousel.module.css";
 
-function Carousel({ children }) {
-  const carouselRef = useRef(null);
-
-  const scroll = (dir) => {
-    const container = carouselRef.current;
-    const scrollAmount = 300;
-
-    container.scrollBy({
-      left: dir === "right" ? scrollAmount : -scrollAmount,
-      behavior: "smooth",
-    });
-  };
-
+function Carousel({ data }) {
   return (
-    <div className={styles.wrapper}>
-      <button className={styles.leftBtn} onClick={() => scroll("left")}>
-        {"<"}
-      </button>
-
-      <div className={styles.carousel} ref={carouselRef}>
-        {children}
-      </div>
-
-      <button className={styles.rightBtn} onClick={() => scroll("right")}>
-        {">"}
-      </button>
+    <div className={styles.carousel}>
+      <Swiper
+        slidesPerView={7}
+        spaceBetween={20}
+        navigation={true}
+        modules={[Navigation]}
+      >
+        {data.map((item) => (
+          <SwiperSlide key={item.id}>
+            <Card data={item} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

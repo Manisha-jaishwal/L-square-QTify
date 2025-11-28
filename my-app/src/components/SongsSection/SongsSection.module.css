@@ -1,0 +1,30 @@
+.wrapper {
+  padding: 24px 32px 40px;
+  background-color: #121212;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.tabs {
+  min-height: 40px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  text-transform: none;
+  font-size: 14px;
+}
+
+.loading {
+  margin-top: 8px;
+}
+
+.carouselWrapper {
+  margin-top: 8px;
+}
